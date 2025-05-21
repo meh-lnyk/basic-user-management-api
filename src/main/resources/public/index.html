@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Management</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Вход в приложение</h1>
+
+  <input type="text" id="username" placeholder="Юзернейм" value="admin">
+  <input type="password" id="password" placeholder="Пароль" value="admin">
+  <button onclick="login()">Войти</button>
+
+  <div id="users" style="display:none">
+    <h2>Пользователи</h2>
+    <button onclick="loadUsers()">Загрузить пользователей</button>
+    <pre id="output"></pre>
+  </div>
+
+  <script src="/script.js"></script>
+</body>
+</html>
