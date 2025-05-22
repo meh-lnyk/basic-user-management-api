@@ -26,10 +26,19 @@ public class JwtTokenProvider {
         Key key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
 
         return Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(now)
-                .setExpiration(expiryDate)
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
+                    .setSubject(username)
+                    .setIssuedAt(now)
+                    .setExpiration(expiryDate)
+                    .signWith(key, SignatureAlgorithm.HS256)
+                    .compact();
+    }
+
+    public String getUsernameFromToken(String token) {
+    return Jwts.parserBuilder()
+            .setSigningKey(secret.getBytes(StandardCharsets.UTF_8))
+            .build()
+            .parseClaimsJws(token)
+            .getBody()
+            .getSubject();
     }
 }
