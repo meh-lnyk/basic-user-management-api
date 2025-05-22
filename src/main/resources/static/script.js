@@ -36,3 +36,40 @@ function loadUsers() {
   })
   .catch(err => alert(err.message));
 }
+
+function showCreateUserForm() {
+  document.getElementById("createUserModal").style.display = "block";
+}
+
+function closeCreateUserForm() {
+  document.getElementById("createUserModal").style.display = "none";
+}
+
+function createUser() {
+  const user = {
+    firstName: document.getElementById("newFirstName").value,
+    lastName: document.getElementById("newLastName").value,
+    email: document.getElementById("newEmail").value,
+    birthDate: document.getElementById("newBirthDate").value,
+    phoneNumber: document.getElementById("newPhone").value
+  };
+
+  fetch("http://localhost:8081/api/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    body: JSON.stringify(user)
+  })
+  .then(res => {
+    if (!res.ok) throw new Error("Ошибка при создании пользователя");
+    return res.json();
+  })
+  .then(data => {
+    alert("Пользователь создан");
+    closeCreateUserForm();
+    loadUsers();
+  })
+  .catch(err => alert(err.message));
+}

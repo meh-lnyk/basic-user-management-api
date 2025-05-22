@@ -12,10 +12,31 @@
   <input type="password" id="password" placeholder="Пароль" value="admin">
   <button onclick="login()">Войти</button>
 
+  <!-- 
+    Не самый лучший способ создавать подобные элементы с загрузкой страницы, делая их "невидимыми", 
+    но в этом случае выбрала более простой и быстрый вариант, потому что таких элементов здесь немного
+  -->
   <div id="users" style="display:none">
     <h2>Пользователи</h2>
+    <button onclick="showCreateUserForm()">Создать пользователя</button>
     <button onclick="loadUsers()">Загрузить пользователей</button>
     <pre id="output"></pre>
+  </div>
+
+  <!-- Форма для добавления новых пользователей -->
+  <div id="createUserModal" class="modal" style="display:none">
+    <div class="modal-content">
+      <span class="close" onclick="closeCreateUserForm()">&times;</span>
+      <h2>Создание пользователя</h2>
+      <form onsubmit="createUser(); return false;">
+        <input type="text" id="newFirstName" placeholder="Имя" required>
+        <input type="text" id="newLastName" placeholder="Фамилия" required>
+        <input type="email" id="newEmail" placeholder="Email" required>
+        <input type="date" id="newBirthDate" placeholder="Дата рождения" required>
+        <input type="text" id="newPhone" placeholder="Телефон" required>
+        <button type="submit">Создать</button>
+      </form>
+    </div>
   </div>
 
   <script src="/script.js"></script>
