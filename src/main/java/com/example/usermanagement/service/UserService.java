@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.time.LocalDate;
 
 import org.springframework.security.authentication.BadCredentialsException;
 
@@ -51,6 +53,28 @@ public class UserService {
         user.setPhoneNumber(userDetails.getPhoneNumber());
         return userRepository.save(user);
     }
+
+    public User patchUser(Long id, Map<String, Object> updates) {
+    User user = userRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+    if (updates.containsKey("firstName"))
+        user.setFirstName((String) updates.get("firstName"));
+
+    if (updates.containsKey("lastName"))
+        user.setLastName((String) updates.get("lastName"));
+
+    if (updates.containsKey("email"))
+        user.setEmail((String) updates.get("email"));
+
+    if (updates.containsKey("phoneNumber"))
+        user.setPhoneNumber((String) updates.get("phoneNumber"));
+
+    if (updates.containsKey("birthDate"))
+        user.setBirthDate(LocalDate.parse((String) updates.get("birthDate")));
+
+    return userRepository.save(user);
+}
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
