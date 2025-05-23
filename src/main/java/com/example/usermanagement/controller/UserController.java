@@ -74,7 +74,7 @@ public class UserController {
                 Files.deleteIfExists(Paths.get("uploads", user.getPhotoFilename()));
             }
             String filename = UUID.randomUUID() + "_" + photo.getOriginalFilename();
-            Path uploadPath = Paths.get("uploads");
+            Path uploadPath = Paths.get(System.getProperty("user.dir"), "uploads");
 
             if (!Files.exists(uploadPath)) {
                 Files.createDirectories(uploadPath);

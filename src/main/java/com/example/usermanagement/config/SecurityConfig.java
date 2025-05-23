@@ -3,12 +3,12 @@ package com.example.usermanagement.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.config.Customizer;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -29,6 +29,7 @@ public class SecurityConfig {
                 .requestMatchers("/", "/index.html", "/styles.css", "/script.js").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/users").authenticated()
                 .requestMatchers(HttpMethod.PATCH, "/api/users/**").authenticated()
+                .requestMatchers("/uploads/**").permitAll() // Разрешаем доступ к загруженным фотографиям
                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(JwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
