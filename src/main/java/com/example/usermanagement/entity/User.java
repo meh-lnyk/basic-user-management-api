@@ -23,7 +23,7 @@ public class User {
     @Column(nullable = false)
     private String firstName;
 
-    private String middleName;
+    private String fathersName;
 
     private LocalDate birthDate;
 
@@ -38,8 +38,8 @@ public class User {
     public void setLastName(String lastName) { this.lastName = lastName; }
     public String getFirstName() { return firstName; }
     public void setFirstName(String firstName) { this.firstName = firstName; }
-    public String getMiddleName() { return middleName; }
-    public void setMiddleName(String middleName) { this.middleName = middleName; }
+    public String getFathersName() { return fathersName; }
+    public void setFathersName(String fathersName) { this.fathersName = fathersName; }
     public LocalDate getBirthDate() { return birthDate; }
     public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
     public String getEmail() { return email; }

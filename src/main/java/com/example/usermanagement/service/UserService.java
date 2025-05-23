@@ -45,7 +45,7 @@ public class UserService {
         User user = getUser(id);
         user.setFirstName(userDetails.getFirstName());
         user.setLastName(userDetails.getLastName());
-        user.setMiddleName(userDetails.getMiddleName());
+        user.setFathersName(userDetails.getFathersName());
         user.setBirthDate(userDetails.getBirthDate());
         user.setEmail(userDetails.getEmail());
         user.setPhoneNumber(userDetails.getPhoneNumber());
