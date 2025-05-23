@@ -32,6 +32,8 @@ public class User {
 
     private String phoneNumber;
 
+    private String photoFilename;
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getLastName() { return lastName; }
@@ -46,4 +48,6 @@ public class User {
     public void setEmail(String email) { this.email = email; }
     public String getPhoneNumber() { return phoneNumber; }
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    public String getPhotoFilename() { return photoFilename; }
+    public void setPhotoFilename(String photoFilename) { this.photoFilename = photoFilename; }
 }
